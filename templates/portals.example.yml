@@ -1,0 +1,1180 @@
+# Portal Scanner Configuration — Rajavi Gontiya
+# Customized for: New Grad Software Engineer (Backend / Data / Cloud / AI-ML)
+# Location: American Fork, Utah | Open to Remote & U.S. On-site
+# Visa: Requires sponsorship — prioritize E-Verify employers
+#
+# Strategy (3 levels):
+#   1. Playwright → careers_url of each company (real-time, reliable)
+#   2. Greenhouse API → structured JSON (fast, Greenhouse-only)
+#   3. WebSearch with site: filters (broad discovery, may be stale)
+#
+# IMPORTANT: Each company in tracked_companies MUST have careers_url.
+
+# -- Title filter --
+# At least 1 positive must match AND 0 negatives must match (case-insensitive).
+
+title_filter:
+  positive:
+    # -- Backend / Software Engineering --
+    - "Software Engineer"
+    - "Software Developer"
+    - "Backend Engineer"
+    - "Backend Developer"
+    - "Python Developer"
+    - "Python Engineer"
+    - "API Engineer"
+    - "Application Developer"
+    - "Full Stack"
+    - "Fullstack"
+    # -- Data Engineering --
+    - "Data Engineer"
+    - "ETL"
+    - "Data Pipeline"
+    - "Data Platform"
+    - "Analytics Engineer"
+    - "Database Engineer"
+    # -- Cloud / DevOps / Platform --
+    - "Cloud Engineer"
+    - "DevOps Engineer"
+    - "Platform Engineer"
+    - "Site Reliability"
+    - "SRE"
+    - "Infrastructure Engineer"
+    - "Systems Engineer"
+    # -- AI / ML --
+    - "AI Engineer"
+    - "ML Engineer"
+    - "Machine Learning"
+    - "AI/ML"
+    - "NLP"
+    - "LLM"
+    - "GenAI"
+    - "MLOps"
+    # -- General catch-all --
+    - "New Grad"
+    - "Entry Level"
+    - "Associate Engineer"
+    - "Junior Engineer"
+    - "Solutions Engineer"
+    - "Integration Engineer"
+    - "Microservices"
+  negative:
+    # Roles outside your stack
+    - "iOS"
+    - "Android"
+    - "Swift"
+    - "Kotlin"
+    - "PHP"
+    - "Ruby"
+    - "Embedded"
+    - "Firmware"
+    - "FPGA"
+    - "ASIC"
+    - "Blockchain"
+    - "Web3"
+    - "Crypto"
+    - "Salesforce Admin"
+    - "SAP "
+    - "Oracle EBS"
+    - "Mainframe"
+    - "COBOL"
+    - ".NET"
+    - "Rust"  # not in your stack currently
+    - "Go Engineer"  # not primary
+    # Too senior for new grad
+    - "Staff"
+    - "Principal"
+    - "Distinguished"
+    - "Director"
+    - "VP "
+    - "Head of"
+    - "Manager"  # engineering manager, not IC
+  seniority_boost:
+    # These are nice-to-have, not required
+    - "New Grad"
+    - "Entry Level"
+    - "Junior"
+    - "Associate"
+    - "Early Career"
+    - "University"
+
+# -- Search queries --
+# Each query triggers a WebSearch. Targeted at U.S. job boards.
+
+search_queries:
+
+  # -- New Grad Aggregators --
+  - name: SimplifyJobs — New Grad SWE
+    query: 'site:simplify.jobs "Software Engineer" "New Grad" OR "Entry Level" 2025 OR 2026'
+    enabled: true
+
+  - name: GitHub New Grad Repo
+    query: 'site:github.com/SimplifyJobs/New-Grad-Positions "Software Engineer" OR "Data Engineer" OR "Backend"'
+    enabled: true
+
+  - name: Levels.fyi — New Grad
+    query: 'site:levels.fyi/jobs "New Grad" OR "Entry Level" "Software Engineer" OR "Data Engineer"'
+    enabled: true
+
+  # -- Greenhouse (heavily used by tech companies) --
+  - name: Greenhouse — Backend New Grad
+    query: 'site:boards.greenhouse.io OR site:job-boards.greenhouse.io "Software Engineer" OR "Backend" "New Grad" OR "Entry Level"'
+    enabled: true
+
+  - name: Greenhouse — Data Engineer
+    query: 'site:boards.greenhouse.io OR site:job-boards.greenhouse.io "Data Engineer" OR "ETL" OR "Data Pipeline" Python'
+    enabled: true
+
+  - name: Greenhouse — Cloud DevOps
+    query: 'site:boards.greenhouse.io OR site:job-boards.greenhouse.io "Cloud Engineer" OR "DevOps" OR "Platform Engineer" AWS OR Azure Docker'
+    enabled: true
+
+  - name: Greenhouse — AI ML Engineer
+    query: 'site:boards.greenhouse.io OR site:job-boards.greenhouse.io "AI Engineer" OR "ML Engineer" OR "Machine Learning" Python'
+    enabled: true
+
+  # -- Ashby --
+  - name: Ashby — Backend SWE
+    query: 'site:jobs.ashbyhq.com "Software Engineer" OR "Backend Engineer" Python OR Django remote'
+    enabled: true
+
+  - name: Ashby — Data Engineer
+    query: 'site:jobs.ashbyhq.com "Data Engineer" OR "Data Platform" OR "ETL" Python OR PySpark'
+    enabled: true
+
+  - name: Ashby — Cloud DevOps
+    query: 'site:jobs.ashbyhq.com "Cloud Engineer" OR "DevOps" OR "SRE" AWS OR Azure OR Kubernetes'
+    enabled: true
+
+  # -- Lever --
+  - name: Lever — Backend SWE
+    query: 'site:jobs.lever.co "Software Engineer" OR "Backend" Python OR Django "New Grad" OR "Entry Level"'
+    enabled: true
+
+  - name: Lever — Data Engineer
+    query: 'site:jobs.lever.co "Data Engineer" OR "ETL" OR "Pipeline" Python OR PySpark'
+    enabled: true
+
+  # -- Workday (used by large enterprises) --
+  - name: Workday — New Grad SWE
+    query: 'site:myworkdayjobs.com "Software Engineer" "New Grad" OR "Entry Level" OR "University"'
+    enabled: true
+
+  # -- LinkedIn (broad catch) --
+  - name: LinkedIn — Backend Python Utah
+    query: 'site:linkedin.com/jobs "Software Engineer" OR "Backend" Python Utah OR remote "Entry Level"'
+    enabled: true
+
+  - name: LinkedIn — Data Engineer Remote
+    query: 'site:linkedin.com/jobs "Data Engineer" Python OR PySpark remote "Entry Level" OR "New Grad"'
+    enabled: true
+
+  # -- Utah / Silicon Slopes specific --
+  - name: Silicon Slopes — SWE Utah
+    query: '"Software Engineer" OR "Backend" OR "Data Engineer" Utah OR Lehi OR Provo OR "Salt Lake City" OR "American Fork" "Entry Level" OR "New Grad"'
+    enabled: true
+
+  - name: Utah Tech Jobs
+    query: 'site:linkedin.com/jobs OR site:indeed.com "Software Engineer" OR "Python Developer" Utah 2025 OR 2026'
+    enabled: true
+
+  # -- Remote-friendly U.S. boards --
+  - name: Remotive — Backend Data Cloud
+    query: 'site:remotive.com "Software Engineer" OR "Data Engineer" OR "Cloud Engineer" OR "Backend" Python remote'
+    enabled: true
+
+  - name: WeWorkRemotely — SWE Data
+    query: 'site:weworkremotely.com "Software Engineer" OR "Data Engineer" OR "Backend" OR "Python" OR "DevOps"'
+    enabled: true
+
+  - name: RemoteOK — SWE Python
+    query: 'site:remoteok.com "Software Engineer" OR "Python" OR "Data Engineer" OR "Backend"'
+    enabled: true
+
+  # -- YC / Startup boards --
+  - name: YC Jobs — Backend Data
+    query: 'site:workatastartup.com "Software Engineer" OR "Backend" OR "Data Engineer" Python remote'
+    enabled: true
+
+  - name: YC Jobs — New Grad
+    query: 'site:workatastartup.com "New Grad" OR "Entry Level" OR "Junior" "Engineer"'
+    enabled: true
+
+  - name: HN Who is Hiring — Backend Data
+    query: 'site:news.ycombinator.com "Who is hiring" "Python" OR "Backend" OR "Data Engineer" OR "Django" remote'
+    enabled: true
+
+  # -- E-Verify focused --
+  - name: E-Verify Sponsors — SWE
+    query: '"Software Engineer" OR "Data Engineer" "E-Verify" OR "visa sponsorship" Python 2025 OR 2026'
+    enabled: true
+
+  - name: MyVisaJobs — SWE Sponsors
+    query: 'site:myvisajobs.com "Software Engineer" OR "Data Engineer" OR "Python" H1B 2025'
+    enabled: true
+
+
+# -- Tracked companies --
+# 100+ top IT companies relevant to your target roles.
+# Priority: E-Verify employers, U.S.-based, Python/backend/data/cloud stack.
+# Categories: FAANG+, Cloud/Infra, AI/ML Labs, Data Platforms, Utah/Silicon Slopes,
+#             Enterprise Software, Fintech, Cybersecurity, Consulting/Staffing
+
+tracked_companies:
+
+  # =========================================================================
+  # TIER 1 — FAANG+ & Big Tech (all E-Verify, strong new grad programs)
+  # =========================================================================
+
+  - name: Google
+    careers_url: https://www.google.com/about/careers/applications/jobs/results
+    scan_method: websearch
+    scan_query: 'site:google.com/about/careers "Software Engineer" OR "Data Engineer" "New Grad" OR "Entry Level" OR "University"'
+    notes: "Mountain View / Remote. Strong new grad pipeline. E-Verify."
+    target_roles: ["Software Engineer", "Data Engineer", "Cloud Engineer"]
+    enabled: true
+
+  - name: Amazon
+    careers_url: https://www.amazon.jobs/en
+    scan_method: websearch
+    scan_query: 'site:amazon.jobs "Software Development Engineer" OR "Data Engineer" "New Grad" OR "Entry Level"'
+    notes: "Seattle / Multiple U.S. E-Verify. SDE-1 new grad roles."
+    target_roles: ["SDE", "Data Engineer", "Cloud Support Engineer"]
+    enabled: true
+
+  - name: Microsoft
+    careers_url: https://careers.microsoft.com
+    scan_method: websearch
+    scan_query: 'site:careers.microsoft.com "Software Engineer" OR "Data Engineer" "New Grad" OR "Entry Level" OR "University"'
+    notes: "Redmond / Remote. Azure, AI. E-Verify. Strong new grad program."
+    target_roles: ["Software Engineer", "Data Engineer", "Cloud Engineer", "AI Engineer"]
+    enabled: true
+
+  - name: Apple
+    careers_url: https://jobs.apple.com
+    scan_method: websearch
+    scan_query: 'site:jobs.apple.com "Software Engineer" OR "Backend" OR "Data" "New Grad" OR "Entry Level"'
+    notes: "Cupertino. E-Verify."
+    target_roles: ["Software Engineer", "Backend Engineer", "Data Engineer"]
+    enabled: true
+
+  - name: Meta
+    careers_url: https://www.metacareers.com
+    scan_method: websearch
+    scan_query: 'site:metacareers.com "Software Engineer" OR "Data Engineer" "New Grad" OR "University"'
+    notes: "Menlo Park / Remote. E-Verify. E3/E4 new grad roles."
+    target_roles: ["Software Engineer", "Data Engineer", "ML Engineer"]
+    enabled: true
+
+  - name: Netflix
+    careers_url: https://jobs.netflix.com
+    scan_method: websearch
+    scan_query: 'site:jobs.netflix.com "Software Engineer" OR "Data Engineer" Python'
+    notes: "Los Gatos. E-Verify. Selective but strong comp."
+    target_roles: ["Software Engineer", "Data Engineer"]
+    enabled: true
+
+  # =========================================================================
+  # TIER 2 — Major Tech & Cloud (E-Verify, known H1B sponsors)
+  # =========================================================================
+
+  - name: Adobe
+    careers_url: https://careers.adobe.com
+    scan_method: websearch
+    scan_query: 'site:careers.adobe.com "Software Engineer" OR "Software Developer" OR "Data Engineer" "New Grad" OR "Entry Level"'
+    notes: "San Jose / Lehi UT / Remote. E-Verify. Has Utah presence!"
+    target_roles: ["Software Engineer", "Full Stack", "Data Engineer", "ML Engineer"]
+    enabled: true
+
+  - name: Salesforce
+    careers_url: https://careers.salesforce.com
+    scan_method: websearch
+    scan_query: 'site:careers.salesforce.com "Software Engineer" OR "Backend" "New Grad" OR "Associate" Python'
+    notes: "SF / Multiple. E-Verify. Futureforce new grad program."
+    target_roles: ["Software Engineer", "Associate MTS", "Data Engineer"]
+    enabled: true
+
+  - name: Oracle
+    careers_url: https://careers.oracle.com
+    scan_method: websearch
+    scan_query: 'site:careers.oracle.com "Software Engineer" OR "Cloud" OR "Data" "New Grad" OR "Entry Level"'
+    notes: "Austin / Multiple U.S. E-Verify. OCI cloud roles."
+    target_roles: ["Software Engineer", "Cloud Engineer", "Data Engineer"]
+    enabled: true
+
+  - name: IBM
+    careers_url: https://www.ibm.com/careers
+    scan_method: websearch
+    scan_query: 'site:ibm.com/careers "Software Engineer" OR "Data Engineer" OR "Cloud" "Entry Level" OR "New Grad"'
+    notes: "Multiple U.S. E-Verify. Watson AI, Cloud."
+    target_roles: ["Software Engineer", "Data Engineer", "Cloud Engineer"]
+    enabled: true
+
+  - name: Intel
+    careers_url: https://jobs.intel.com
+    scan_method: websearch
+    scan_query: 'site:jobs.intel.com "Software Engineer" OR "Cloud" OR "Data" "New Grad" OR "Entry Level"'
+    notes: "Multiple U.S. E-Verify."
+    target_roles: ["Software Engineer", "Cloud Engineer"]
+    enabled: true
+
+  - name: Cisco
+    careers_url: https://jobs.cisco.com
+    scan_method: websearch
+    scan_query: 'site:jobs.cisco.com "Software Engineer" OR "Backend" OR "Cloud" "New Grad" OR "Entry Level"'
+    notes: "San Jose / Multiple. E-Verify."
+    target_roles: ["Software Engineer", "Cloud Engineer", "DevOps"]
+    enabled: true
+
+  - name: VMware (Broadcom)
+    careers_url: https://careers.broadcom.com
+    scan_method: websearch
+    scan_query: 'site:careers.broadcom.com "Software Engineer" OR "Cloud" "New Grad" OR "Entry Level"'
+    notes: "Palo Alto / Multiple. E-Verify."
+    target_roles: ["Software Engineer", "Cloud Engineer"]
+    enabled: true
+
+  - name: Nvidia
+    careers_url: https://nvidia.wd5.myworkdayjobs.com/NVIDIAExternalCareerSite
+    scan_method: websearch
+    scan_query: 'site:nvidia.wd5.myworkdayjobs.com "Software Engineer" OR "AI" OR "ML" OR "Data" "New Grad"'
+    notes: "Santa Clara. E-Verify. AI/ML infrastructure."
+    target_roles: ["Software Engineer", "AI Engineer", "Data Engineer"]
+    enabled: true
+
+  - name: Qualcomm
+    careers_url: https://careers.qualcomm.com
+    scan_method: websearch
+    scan_query: 'site:careers.qualcomm.com "Software Engineer" OR "Cloud" "New Grad" OR "Entry Level"'
+    notes: "San Diego. E-Verify."
+    target_roles: ["Software Engineer", "Cloud Engineer"]
+    enabled: true
+
+  - name: ServiceNow
+    careers_url: https://careers.servicenow.com
+    scan_method: websearch
+    scan_query: 'site:careers.servicenow.com "Software Engineer" OR "Backend" "New Grad" OR "Entry Level"'
+    notes: "Santa Clara / Multiple. E-Verify."
+    target_roles: ["Software Engineer", "Backend Engineer"]
+    enabled: true
+
+  - name: SAP
+    careers_url: https://jobs.sap.com
+    scan_method: websearch
+    scan_query: 'site:jobs.sap.com "Software Engineer" OR "Cloud" OR "Data" "New Grad" OR "Entry Level" United States'
+    notes: "Multiple U.S. E-Verify."
+    target_roles: ["Software Engineer", "Cloud Engineer", "Data Engineer"]
+    enabled: true
+
+  - name: Twitch
+    careers_url: https://www.twitch.tv/jobs
+    scan_method: websearch
+    scan_query: '"Twitch" "Software Engineer" OR "Backend" site:amazon.jobs OR site:twitch.tv/jobs'
+    notes: "SF. Amazon subsidiary. E-Verify."
+    target_roles: ["Software Engineer", "Backend Engineer"]
+    enabled: true
+
+  # =========================================================================
+  # TIER 3 — AI / ML Labs & Companies
+  # =========================================================================
+
+  - name: Anthropic
+    careers_url: https://job-boards.greenhouse.io/anthropic
+    api: https://boards-api.greenhouse.io/v1/boards/anthropic/jobs
+    notes: "SF / Remote. Claude AI. E-Verify."
+    target_roles: ["Software Engineer", "ML Engineer", "AI Engineer"]
+    enabled: true
+
+  - name: OpenAI
+    careers_url: https://openai.com/careers
+    scan_method: websearch
+    scan_query: 'site:openai.com/careers "Software Engineer" OR "Backend" OR "Data" OR "ML"'
+    notes: "SF. E-Verify. GPT/ChatGPT."
+    target_roles: ["Software Engineer", "Backend Engineer", "ML Engineer"]
+    enabled: true
+
+  - name: Retell AI
+    careers_url: https://jobs.ashbyhq.com/retellai
+    scan_method: websearch
+    scan_query: 'site:jobs.ashbyhq.com/retellai "Engineer"'
+    notes: "Voice AI startup. Applied to previously."
+    target_roles: ["Software Engineer", "AI Engineer"]
+    enabled: true
+
+  - name: FlexAI
+    careers_url: https://jobs.ashbyhq.com/flex-ai
+    scan_method: websearch
+    scan_query: 'site:jobs.ashbyhq.com/flex-ai "Engineer"'
+    notes: "AI infrastructure. Applied to previously."
+    target_roles: ["Software Engineer", "Infrastructure Engineer"]
+    enabled: true
+
+  - name: Hugging Face
+    careers_url: https://apply.workable.com/huggingface/
+    scan_method: websearch
+    scan_query: 'site:apply.workable.com/huggingface "Engineer" OR "ML"'
+    notes: "NYC / Remote. Open-source ML hub."
+    target_roles: ["Software Engineer", "ML Engineer"]
+    enabled: true
+
+  - name: Cohere
+    careers_url: https://jobs.ashbyhq.com/cohere
+    notes: "Toronto / Remote. LLM provider."
+    target_roles: ["Software Engineer", "ML Engineer"]
+    enabled: true
+
+  - name: Databricks
+    careers_url: https://www.databricks.com/company/careers
+    scan_method: websearch
+    scan_query: 'site:databricks.com/company/careers "Software Engineer" OR "Data Engineer" "New Grad" OR "Entry Level"'
+    notes: "SF / Remote. Spark/Delta Lake. E-Verify. Strong fit for PySpark experience."
+    target_roles: ["Software Engineer", "Data Engineer", "Solutions Engineer"]
+    enabled: true
+
+  - name: Palantir
+    careers_url: https://jobs.lever.co/palantir
+    notes: "NYC / DC / Palo Alto. E-Verify. New grad FDE roles."
+    target_roles: ["Software Engineer", "Forward Deployed Engineer"]
+    enabled: true
+
+  - name: Scale AI
+    careers_url: https://job-boards.greenhouse.io/scaleai
+    api: https://boards-api.greenhouse.io/v1/boards/scaleai/jobs
+    notes: "SF. AI data platform. E-Verify."
+    target_roles: ["Software Engineer", "ML Engineer", "Data Engineer"]
+    enabled: true
+
+  - name: Weights & Biases
+    careers_url: https://jobs.lever.co/wandb
+    notes: "SF / Remote. MLOps platform."
+    target_roles: ["Software Engineer", "ML Engineer"]
+    enabled: true
+
+  - name: LangChain
+    careers_url: https://jobs.ashbyhq.com/langchain
+    notes: "Remote. LangChain/LangSmith LLM framework."
+    target_roles: ["Software Engineer", "Backend Engineer"]
+    enabled: true
+
+  - name: Pinecone
+    careers_url: https://jobs.ashbyhq.com/pinecone
+    notes: "Remote. Vector database for AI."
+    target_roles: ["Software Engineer", "Backend Engineer"]
+    enabled: true
+
+  - name: Perplexity
+    careers_url: https://jobs.ashbyhq.com/perplexity
+    scan_method: websearch
+    scan_query: 'site:jobs.ashbyhq.com/perplexity "Engineer"'
+    notes: "SF. AI-native search."
+    target_roles: ["Software Engineer", "Backend Engineer", "AI Engineer"]
+    enabled: true
+
+  # =========================================================================
+  # TIER 4 — Data Platforms & Analytics (strong fit for ETL/pipeline experience)
+  # =========================================================================
+
+  - name: Snowflake
+    careers_url: https://careers.snowflake.com
+    scan_method: websearch
+    scan_query: 'site:careers.snowflake.com "Software Engineer" OR "Data Engineer" "New Grad" OR "Entry Level"'
+    notes: "San Mateo / Multiple. E-Verify. Cloud data platform."
+    target_roles: ["Software Engineer", "Data Engineer", "Cloud Engineer"]
+    enabled: true
+
+  - name: Confluent
+    careers_url: https://careers.confluent.io
+    scan_method: websearch
+    scan_query: 'site:careers.confluent.io "Software Engineer" OR "Data" "New Grad" OR "Entry Level"'
+    notes: "Mountain View / Remote. Kafka. E-Verify."
+    target_roles: ["Software Engineer", "Data Engineer"]
+    enabled: true
+
+  - name: Elastic
+    careers_url: https://jobs.elastic.co
+    scan_method: websearch
+    scan_query: 'site:jobs.elastic.co "Software Engineer" OR "Backend" Python OR cloud'
+    notes: "Remote-first. Elasticsearch. E-Verify."
+    target_roles: ["Software Engineer", "Backend Engineer"]
+    enabled: true
+
+  - name: MongoDB
+    careers_url: https://www.mongodb.com/company/careers
+    scan_method: websearch
+    scan_query: 'site:mongodb.com/company/careers "Software Engineer" OR "Backend" "New Grad" OR "Entry Level"'
+    notes: "NYC / Remote. E-Verify."
+    target_roles: ["Software Engineer", "Backend Engineer", "Cloud Engineer"]
+    enabled: true
+
+  - name: Domo
+    careers_url: https://www.domo.com/careers
+    scan_method: websearch
+    scan_query: 'site:domo.com/careers "Software Engineer" OR "Data" OR "Backend"'
+    notes: "American Fork, UT! Local. E-Verify. BI/data platform."
+    target_roles: ["Software Engineer", "Data Engineer", "Backend Engineer"]
+    enabled: true
+
+  - name: Splunk (Cisco)
+    careers_url: https://jobs.cisco.com
+    scan_method: websearch
+    scan_query: 'site:jobs.cisco.com "Splunk" "Software Engineer" OR "Data"'
+    notes: "SF / Remote. Now part of Cisco. Data analytics."
+    target_roles: ["Software Engineer", "Data Engineer"]
+    enabled: true
+
+  - name: Datadog
+    careers_url: https://careers.datadoghq.com
+    scan_method: websearch
+    scan_query: 'site:careers.datadoghq.com "Software Engineer" OR "Backend" "New Grad" OR "Entry Level"'
+    notes: "NYC / Remote. Observability. E-Verify."
+    target_roles: ["Software Engineer", "Backend Engineer"]
+    enabled: true
+
+  - name: New Relic
+    careers_url: https://newrelic.com/about/careers
+    scan_method: websearch
+    scan_query: 'site:newrelic.com/about/careers "Software Engineer" OR "Backend"'
+    notes: "Portland / Remote. Observability."
+    target_roles: ["Software Engineer", "Backend Engineer"]
+    enabled: true
+
+  - name: Fivetran
+    careers_url: https://www.fivetran.com/careers
+    scan_method: websearch
+    scan_query: 'site:fivetran.com/careers "Software Engineer" OR "Data" OR "Backend"'
+    notes: "Oakland / Remote. ETL/data pipeline company — direct fit."
+    target_roles: ["Software Engineer", "Data Engineer"]
+    enabled: true
+
+  - name: dbt Labs
+    careers_url: https://job-boards.greenhouse.io/daboratorieslabs
+    api: https://boards-api.greenhouse.io/v1/boards/daboratorieslabs/jobs
+    notes: "Remote. Data transformation. Strong data engineering culture."
+    target_roles: ["Software Engineer", "Data Engineer"]
+    enabled: true
+
+  # =========================================================================
+  # TIER 5 — Utah / Silicon Slopes (local, strong for in-person)
+  # =========================================================================
+
+  - name: Lucid Software
+    careers_url: https://job-boards.greenhouse.io/lucidsoftware
+    api: https://boards-api.greenhouse.io/v1/boards/lucidsoftware/jobs
+    notes: "South Jordan, UT. Lucidchart/Lucidspark. E-Verify. Known H1B sponsor."
+    target_roles: ["Software Engineer", "Backend Engineer", "Full Stack"]
+    enabled: true
+
+  - name: Entrata
+    careers_url: https://www.entrata.com/careers
+    scan_method: websearch
+    scan_query: 'site:entrata.com/careers "Software Engineer" OR "Backend" OR "Data"'
+    notes: "Lehi, UT. Property management SaaS."
+    target_roles: ["Software Engineer", "Backend Engineer", "Data Engineer"]
+    enabled: true
+
+  - name: Canopy (now SurePrep)
+    careers_url: https://www.canopytax.com/careers
+    scan_method: websearch
+    scan_query: '"Canopy" OR "SurePrep" "Software Engineer" Utah'
+    notes: "Lehi, UT. Tax/accounting SaaS."
+    target_roles: ["Software Engineer", "Backend Engineer"]
+    enabled: true
+
+  - name: Zions Bancorporation
+    careers_url: https://www.zionsbancorporation.com/careers
+    scan_method: websearch
+    scan_query: 'site:zionsbancorporation.com "Software Engineer" OR "Data Engineer" OR "Developer"'
+    notes: "Salt Lake City, UT. Banking tech. E-Verify."
+    target_roles: ["Software Engineer", "Data Engineer"]
+    enabled: true
+
+  - name: Pluralsight
+    careers_url: https://www.pluralsight.com/careers
+    scan_method: websearch
+    scan_query: 'site:pluralsight.com/careers "Software Engineer" OR "Backend" OR "Data"'
+    notes: "Draper, UT. EdTech."
+    target_roles: ["Software Engineer", "Backend Engineer", "Data Engineer"]
+    enabled: true
+
+  - name: Qualtrics
+    careers_url: https://www.qualtrics.com/careers
+    scan_method: websearch
+    scan_query: 'site:qualtrics.com/careers "Software Engineer" OR "Backend" OR "Data" "New Grad" OR "Entry Level"'
+    notes: "Provo, UT / Seattle. E-Verify. Experience management."
+    target_roles: ["Software Engineer", "Backend Engineer", "Data Engineer"]
+    enabled: true
+
+  - name: MX Technologies
+    careers_url: https://www.mx.com/careers
+    scan_method: websearch
+    scan_query: 'site:mx.com/careers "Software Engineer" OR "Data" OR "Backend"'
+    notes: "Lehi, UT. Open finance/banking data."
+    target_roles: ["Software Engineer", "Data Engineer", "Backend Engineer"]
+    enabled: true
+
+  - name: Instructure
+    careers_url: https://www.instructure.com/careers
+    scan_method: websearch
+    scan_query: 'site:instructure.com/careers "Software Engineer" OR "Backend"'
+    notes: "Salt Lake City, UT. Canvas LMS."
+    target_roles: ["Software Engineer", "Backend Engineer"]
+    enabled: true
+
+  - name: Health Catalyst
+    careers_url: https://www.healthcatalyst.com/careers
+    scan_method: websearch
+    scan_query: 'site:healthcatalyst.com/careers "Software Engineer" OR "Data Engineer"'
+    notes: "Salt Lake City, UT. Healthcare data/analytics. E-Verify."
+    target_roles: ["Software Engineer", "Data Engineer"]
+    enabled: true
+
+  - name: Podium
+    careers_url: https://www.podium.com/careers
+    scan_method: websearch
+    scan_query: 'site:podium.com/careers "Software Engineer" OR "Backend"'
+    notes: "Lehi, UT. Customer messaging platform."
+    target_roles: ["Software Engineer", "Backend Engineer"]
+    enabled: true
+
+  - name: Vivint
+    careers_url: https://www.vivint.com/careers
+    scan_method: websearch
+    scan_query: 'site:vivint.com/careers "Software Engineer" OR "Backend" OR "Cloud"'
+    notes: "Lehi, UT. Smart home tech."
+    target_roles: ["Software Engineer", "Cloud Engineer"]
+    enabled: true
+
+  - name: 1-800 Contacts
+    careers_url: https://www.1800contacts.com/careers
+    scan_method: websearch
+    scan_query: '"1-800 Contacts" "Software Engineer" OR "Developer" Utah'
+    notes: "Draper, UT. E-commerce."
+    target_roles: ["Software Engineer", "Full Stack"]
+    enabled: true
+
+  # =========================================================================
+  # TIER 6 — Cloud / Infrastructure / DevOps Companies
+  # =========================================================================
+
+  - name: HashiCorp (IBM)
+    careers_url: https://www.hashicorp.com/careers
+    scan_method: websearch
+    scan_query: 'site:hashicorp.com/careers "Software Engineer" OR "Cloud" OR "Backend"'
+    notes: "Remote. Terraform, Vault, Docker ecosystem. E-Verify via IBM."
+    target_roles: ["Software Engineer", "Cloud Engineer"]
+    enabled: true
+
+  - name: Docker
+    careers_url: https://www.docker.com/careers
+    scan_method: websearch
+    scan_query: 'site:docker.com/careers "Software Engineer" OR "Backend"'
+    notes: "Remote. Container platform — direct Docker/K8s experience match."
+    target_roles: ["Software Engineer", "Backend Engineer", "Platform Engineer"]
+    enabled: true
+
+  - name: Cloudflare
+    careers_url: https://www.cloudflare.com/careers
+    scan_method: websearch
+    scan_query: 'site:cloudflare.com/careers "Software Engineer" OR "Backend" "New Grad" OR "Entry Level"'
+    notes: "SF / Austin / Remote. E-Verify."
+    target_roles: ["Software Engineer", "Backend Engineer", "Systems Engineer"]
+    enabled: true
+
+  - name: DigitalOcean
+    careers_url: https://www.digitalocean.com/careers
+    scan_method: websearch
+    scan_query: 'site:digitalocean.com/careers "Software Engineer" OR "Backend" OR "Cloud"'
+    notes: "Remote. Cloud infrastructure."
+    target_roles: ["Software Engineer", "Cloud Engineer", "Backend Engineer"]
+    enabled: true
+
+  - name: Red Hat (IBM)
+    careers_url: https://careers-redhat.icims.com
+    scan_method: websearch
+    scan_query: 'site:careers-redhat.icims.com "Software Engineer" OR "Cloud" OR "Kubernetes"'
+    notes: "Raleigh / Remote. OpenShift, K8s. E-Verify."
+    target_roles: ["Software Engineer", "Cloud Engineer", "Platform Engineer"]
+    enabled: true
+
+  - name: GitLab
+    careers_url: https://about.gitlab.com/jobs
+    scan_method: websearch
+    scan_query: 'site:about.gitlab.com/jobs "Backend Engineer" OR "Software Engineer" Python'
+    notes: "Remote-first. CI/CD, DevOps platform."
+    target_roles: ["Backend Engineer", "Software Engineer"]
+    enabled: true
+
+  - name: GitHub
+    careers_url: https://github.com/about/careers
+    scan_method: websearch
+    scan_query: 'site:github.com/about/careers OR site:microsoft.com "GitHub" "Software Engineer" OR "Backend"'
+    notes: "Remote. Microsoft subsidiary. E-Verify."
+    target_roles: ["Software Engineer", "Backend Engineer"]
+    enabled: true
+
+  # =========================================================================
+  # TIER 7 — Enterprise Software / SaaS (strong new grad hiring)
+  # =========================================================================
+
+  - name: Workday
+    careers_url: https://www.workday.com/en-us/company/careers
+    scan_method: websearch
+    scan_query: 'site:workday.com "Software Engineer" OR "Backend" "New Grad" OR "University"'
+    notes: "Pleasanton / Multiple. E-Verify."
+    target_roles: ["Software Engineer", "Backend Engineer"]
+    enabled: true
+
+  - name: Atlassian
+    careers_url: https://www.atlassian.com/company/careers
+    scan_method: websearch
+    scan_query: 'site:atlassian.com/company/careers "Software Engineer" OR "Backend" "New Grad" OR "Entry Level"'
+    notes: "SF / Remote. Jira, Confluence. E-Verify."
+    target_roles: ["Software Engineer", "Backend Engineer"]
+    enabled: true
+
+  - name: Twilio
+    careers_url: https://www.twilio.com/en-us/company/jobs
+    scan_method: websearch
+    scan_query: 'site:twilio.com/company/jobs "Software Engineer" OR "Backend" Python'
+    notes: "SF / Remote. Communications APIs. E-Verify."
+    target_roles: ["Software Engineer", "Backend Engineer"]
+    enabled: true
+
+  - name: Stripe
+    careers_url: https://stripe.com/jobs
+    scan_method: websearch
+    scan_query: 'site:stripe.com/jobs "Software Engineer" OR "Backend" "New Grad"'
+    notes: "SF / Remote. Payments. E-Verify."
+    target_roles: ["Software Engineer", "Backend Engineer"]
+    enabled: true
+
+  - name: Shopify
+    careers_url: https://www.shopify.com/careers
+    scan_method: websearch
+    scan_query: 'site:shopify.com/careers "Software Engineer" OR "Backend" OR "Data"'
+    notes: "Remote. E-commerce platform."
+    target_roles: ["Software Engineer", "Backend Engineer", "Data Engineer"]
+    enabled: true
+
+  - name: HubSpot
+    careers_url: https://www.hubspot.com/careers
+    scan_method: websearch
+    scan_query: 'site:hubspot.com/careers "Software Engineer" OR "Backend" "New Grad" OR "Entry Level"'
+    notes: "Cambridge MA / Remote. CRM. E-Verify."
+    target_roles: ["Software Engineer", "Backend Engineer"]
+    enabled: true
+
+  - name: Intuit
+    careers_url: https://jobs.intuit.com
+    scan_method: websearch
+    scan_query: 'site:jobs.intuit.com "Software Engineer" OR "Data Engineer" "New Grad" OR "Entry Level"'
+    notes: "Mountain View / Multiple. TurboTax, QuickBooks. E-Verify."
+    target_roles: ["Software Engineer", "Data Engineer", "Full Stack"]
+    enabled: true
+
+  - name: Uber
+    careers_url: https://www.uber.com/us/en/careers
+    scan_method: websearch
+    scan_query: 'site:uber.com/careers "Software Engineer" OR "Backend" OR "Data" "New Grad"'
+    notes: "SF / Multiple. E-Verify."
+    target_roles: ["Software Engineer", "Backend Engineer", "Data Engineer"]
+    enabled: true
+
+  - name: Lyft
+    careers_url: https://www.lyft.com/careers
+    scan_method: websearch
+    scan_query: 'site:lyft.com/careers "Software Engineer" OR "Backend" OR "Data"'
+    notes: "SF. E-Verify."
+    target_roles: ["Software Engineer", "Backend Engineer", "Data Engineer"]
+    enabled: true
+
+  - name: Airbnb
+    careers_url: https://careers.airbnb.com
+    scan_method: websearch
+    scan_query: 'site:careers.airbnb.com "Software Engineer" OR "Backend" OR "Data" "New Grad"'
+    notes: "SF. E-Verify."
+    target_roles: ["Software Engineer", "Backend Engineer", "Data Engineer"]
+    enabled: true
+
+  - name: Dropbox
+    careers_url: https://www.dropbox.com/jobs
+    scan_method: websearch
+    scan_query: 'site:dropbox.com/jobs "Software Engineer" OR "Backend"'
+    notes: "SF / Remote. E-Verify."
+    target_roles: ["Software Engineer", "Backend Engineer"]
+    enabled: true
+
+  - name: Snap
+    careers_url: https://careers.snap.com
+    scan_method: websearch
+    scan_query: 'site:careers.snap.com "Software Engineer" OR "Backend" "New Grad"'
+    notes: "Santa Monica. E-Verify."
+    target_roles: ["Software Engineer", "Backend Engineer"]
+    enabled: true
+
+  - name: Pinterest
+    careers_url: https://www.pinterestcareers.com
+    scan_method: websearch
+    scan_query: 'site:pinterestcareers.com "Software Engineer" OR "Backend" OR "Data" "New Grad"'
+    notes: "SF / Remote. E-Verify."
+    target_roles: ["Software Engineer", "Backend Engineer", "Data Engineer"]
+    enabled: true
+
+  - name: LinkedIn
+    careers_url: https://careers.linkedin.com
+    scan_method: websearch
+    scan_query: 'site:careers.linkedin.com "Software Engineer" OR "Backend" OR "Data" "New Grad"'
+    notes: "Sunnyvale / Remote. Microsoft subsidiary. E-Verify."
+    target_roles: ["Software Engineer", "Backend Engineer", "Data Engineer"]
+    enabled: true
+
+  - name: Reddit
+    careers_url: https://www.redditinc.com/careers
+    scan_method: websearch
+    scan_query: 'site:redditinc.com "Software Engineer" OR "Backend" Python'
+    notes: "SF / Remote. Python-heavy backend."
+    target_roles: ["Software Engineer", "Backend Engineer"]
+    enabled: true
+
+  - name: Spotify
+    careers_url: https://jobs.lever.co/spotify
+    notes: "NYC / Remote. Audio platform, data/ML."
+    target_roles: ["Software Engineer", "Backend Engineer", "Data Engineer"]
+    enabled: true
+
+  - name: Block (Square/Cash App)
+    careers_url: https://block.xyz/careers
+    scan_method: websearch
+    scan_query: 'site:block.xyz/careers "Software Engineer" OR "Backend" "New Grad"'
+    notes: "SF / Multiple. E-Verify."
+    target_roles: ["Software Engineer", "Backend Engineer"]
+    enabled: true
+
+  # =========================================================================
+  # TIER 8 — Fintech (known Python/data shops, often E-Verify)
+  # =========================================================================
+
+  - name: Robinhood
+    careers_url: https://robinhood.com/us/en/careers
+    scan_method: websearch
+    scan_query: 'site:robinhood.com "Software Engineer" OR "Backend" "New Grad"'
+    notes: "Menlo Park. E-Verify. Python backend."
+    target_roles: ["Software Engineer", "Backend Engineer", "Data Engineer"]
+    enabled: true
+
+  - name: Plaid
+    careers_url: https://plaid.com/careers
+    scan_method: websearch
+    scan_query: 'site:plaid.com/careers "Software Engineer" OR "Backend" "New Grad"'
+    notes: "SF / Remote. Financial APIs. E-Verify."
+    target_roles: ["Software Engineer", "Backend Engineer"]
+    enabled: true
+
+  - name: Affirm
+    careers_url: https://www.affirm.com/careers
+    scan_method: websearch
+    scan_query: 'site:affirm.com/careers "Software Engineer" OR "Backend" OR "Data" "New Grad"'
+    notes: "SF / Remote. BNPL. E-Verify. Python-heavy."
+    target_roles: ["Software Engineer", "Backend Engineer", "Data Engineer"]
+    enabled: true
+
+  - name: Toast
+    careers_url: https://careers.toasttab.com
+    scan_method: websearch
+    scan_query: 'site:careers.toasttab.com "Software Engineer" OR "Backend" "New Grad"'
+    notes: "Boston. Restaurant tech. E-Verify."
+    target_roles: ["Software Engineer", "Backend Engineer"]
+    enabled: true
+
+  - name: Coinbase
+    careers_url: https://www.coinbase.com/careers
+    scan_method: websearch
+    scan_query: 'site:coinbase.com/careers "Software Engineer" OR "Backend" "New Grad"'
+    notes: "Remote. E-Verify."
+    target_roles: ["Software Engineer", "Backend Engineer"]
+    enabled: true
+
+  # =========================================================================
+  # TIER 9 — Cybersecurity (often need Python/cloud engineers)
+  # =========================================================================
+
+  - name: CrowdStrike
+    careers_url: https://crowdstrike.wd5.myworkdayjobs.com
+    scan_method: websearch
+    scan_query: 'site:crowdstrike.wd5.myworkdayjobs.com "Software Engineer" OR "Backend" OR "Cloud" "New Grad"'
+    notes: "Austin / Remote. E-Verify. Python-heavy."
+    target_roles: ["Software Engineer", "Cloud Engineer", "Backend Engineer"]
+    enabled: true
+
+  - name: Palo Alto Networks
+    careers_url: https://jobs.paloaltonetworks.com
+    scan_method: websearch
+    scan_query: 'site:jobs.paloaltonetworks.com "Software Engineer" OR "Cloud" "New Grad" OR "Entry Level"'
+    notes: "Santa Clara. E-Verify."
+    target_roles: ["Software Engineer", "Cloud Engineer"]
+    enabled: true
+
+  - name: Fortinet
+    careers_url: https://www.fortinet.com/corporate/careers
+    scan_method: websearch
+    scan_query: 'site:fortinet.com "Software Engineer" OR "Cloud" "New Grad" OR "Entry Level"'
+    notes: "Sunnyvale. E-Verify."
+    target_roles: ["Software Engineer", "Cloud Engineer"]
+    enabled: true
+
+  - name: Zscaler
+    careers_url: https://www.zscaler.com/careers
+    scan_method: websearch
+    scan_query: 'site:zscaler.com/careers "Software Engineer" OR "Cloud" "New Grad"'
+    notes: "San Jose. E-Verify."
+    target_roles: ["Software Engineer", "Cloud Engineer"]
+    enabled: true
+
+  - name: SentinelOne
+    careers_url: https://www.sentinelone.com/careers
+    scan_method: websearch
+    scan_query: 'site:sentinelone.com/careers "Software Engineer" OR "Backend" OR "Cloud"'
+    notes: "Mountain View. E-Verify."
+    target_roles: ["Software Engineer", "Backend Engineer", "Cloud Engineer"]
+    enabled: true
+
+  # =========================================================================
+  # TIER 10 — Consulting / Staffing (visa-friendly fast placement)
+  # =========================================================================
+
+  - name: Infosys (U.S.)
+    careers_url: https://www.infosys.com/careers
+    scan_method: websearch
+    scan_query: 'site:infosys.com "Software Engineer" OR "Python" OR "Data" United States "Entry Level"'
+    notes: "Multiple U.S. Previous employer. E-Verify. Familiar with their stack."
+    target_roles: ["Software Engineer", "Data Engineer", "Python Developer"]
+    enabled: true
+
+  - name: SkillStorm
+    careers_url: https://www.skillstorm.com/careers
+    scan_method: websearch
+    scan_query: 'site:skillstorm.com "Software Engineer" OR "Developer" OR "Cloud"'
+    notes: "Staffing firm. Visa-friendly. Fast placement."
+    target_roles: ["Software Engineer", "Cloud Engineer"]
+    enabled: true
+
+  - name: mthree
+    careers_url: https://www.mthree.com/careers
+    scan_method: websearch
+    scan_query: 'site:mthree.com "Software Engineer" OR "Developer" "Graduate"'
+    notes: "Staffing/training. H1B friendly. New grad program."
+    target_roles: ["Software Engineer", "Junior Developer"]
+    enabled: true
+
+  - name: Revature
+    careers_url: https://revature.com/careers
+    scan_method: websearch
+    scan_query: 'site:revature.com "Software Engineer" OR "Developer" "Entry Level"'
+    notes: "Staffing/training. Visa-friendly. New grad placement."
+    target_roles: ["Software Engineer", "Full Stack Developer"]
+    enabled: true
+
+  - name: Tata Consultancy Services
+    careers_url: https://www.tcs.com/careers
+    scan_method: websearch
+    scan_query: 'site:tcs.com/careers "Software Engineer" OR "Developer" United States'
+    notes: "Multiple U.S. E-Verify."
+    target_roles: ["Software Engineer", "Python Developer"]
+    enabled: true
+
+  - name: Wipro
+    careers_url: https://careers.wipro.com
+    scan_method: websearch
+    scan_query: 'site:careers.wipro.com "Software Engineer" OR "Developer" United States'
+    notes: "Multiple U.S. E-Verify."
+    target_roles: ["Software Engineer", "Data Engineer"]
+    enabled: true
+
+  - name: Cognizant
+    careers_url: https://careers.cognizant.com
+    scan_method: websearch
+    scan_query: 'site:careers.cognizant.com "Software Engineer" OR "Python" OR "Cloud" United States "Entry"'
+    notes: "Multiple U.S. E-Verify."
+    target_roles: ["Software Engineer", "Data Engineer", "Cloud Engineer"]
+    enabled: true
+
+  - name: Accenture
+    careers_url: https://www.accenture.com/us-en/careers
+    scan_method: websearch
+    scan_query: 'site:accenture.com "Software Engineer" OR "Developer" OR "Data" "Entry Level" OR "Analyst"'
+    notes: "Multiple U.S. E-Verify."
+    target_roles: ["Software Engineer", "Data Engineer", "Technology Analyst"]
+    enabled: true
+
+  - name: Deloitte
+    careers_url: https://apply.deloitte.com
+    scan_method: websearch
+    scan_query: 'site:apply.deloitte.com "Software Engineer" OR "Data Engineer" OR "Cloud" "Analyst" OR "Consultant"'
+    notes: "Multiple U.S. E-Verify."
+    target_roles: ["Software Engineer", "Cloud Engineer", "Technology Analyst"]
+    enabled: true
+
+  # =========================================================================
+  # TIER 11 — Mid-size / Growth Tech (good new grad chances)
+  # =========================================================================
+
+  - name: Vercel
+    careers_url: https://job-boards.greenhouse.io/vercel
+    api: https://boards-api.greenhouse.io/v1/boards/vercel/jobs
+    notes: "Remote. Next.js, AI SDK."
+    target_roles: ["Software Engineer", "Full Stack"]
+    enabled: true
+
+  - name: Supabase
+    careers_url: https://jobs.ashbyhq.com/supabase
+    scan_method: websearch
+    scan_query: 'site:jobs.ashbyhq.com/supabase "Engineer"'
+    notes: "Remote. Open-source Firebase alternative."
+    target_roles: ["Software Engineer", "Backend Engineer"]
+    enabled: true
+
+  - name: Retool
+    careers_url: https://retool.com/careers
+    scan_method: websearch
+    scan_query: 'site:retool.com/careers "Software Engineer" OR "Backend"'
+    notes: "SF. Internal tools platform."
+    target_roles: ["Software Engineer", "Backend Engineer"]
+    enabled: true
+
+  - name: Notion
+    careers_url: https://www.notion.so/careers
+    scan_method: websearch
+    scan_query: 'site:notion.so/careers "Software Engineer" OR "Backend" "New Grad"'
+    notes: "SF. Productivity platform. E-Verify."
+    target_roles: ["Software Engineer", "Backend Engineer"]
+    enabled: true
+
+  - name: Figma
+    careers_url: https://www.figma.com/careers
+    scan_method: websearch
+    scan_query: 'site:figma.com/careers "Software Engineer" OR "Backend" "New Grad"'
+    notes: "SF. Design tool. E-Verify."
+    target_roles: ["Software Engineer", "Backend Engineer"]
+    enabled: true
+
+  - name: Canva
+    careers_url: https://www.canva.com/careers
+    scan_method: websearch
+    scan_query: 'site:canva.com/careers "Software Engineer" OR "Backend" OR "Data"'
+    notes: "SF / Sydney. Design platform."
+    target_roles: ["Software Engineer", "Backend Engineer", "Data Engineer"]
+    enabled: true
+
+  - name: Airtable
+    careers_url: https://job-boards.greenhouse.io/airtable
+    api: https://boards-api.greenhouse.io/v1/boards/airtable/jobs
+    notes: "SF. No-code + AI platform."
+    target_roles: ["Software Engineer", "Backend Engineer"]
+    enabled: true
+
+  - name: Zapier
+    careers_url: https://jobs.ashbyhq.com/zapier
+    scan_method: websearch
+    scan_query: 'site:jobs.ashbyhq.com/zapier "Engineer"'
+    notes: "Remote-first. Automation platform. Python backend."
+    target_roles: ["Software Engineer", "Backend Engineer"]
+    enabled: true
+
+  - name: Twilio
+    careers_url: https://www.twilio.com/en-us/company/jobs
+    scan_method: websearch
+    scan_query: 'site:twilio.com/company/jobs "Software Engineer" OR "Backend" Python'
+    notes: "SF / Remote. Communications APIs."
+    target_roles: ["Software Engineer", "Backend Engineer"]
+    enabled: true
+
+  - name: Okta
+    careers_url: https://www.okta.com/company/careers
+    scan_method: websearch
+    scan_query: 'site:okta.com "Software Engineer" OR "Backend" "New Grad" OR "Entry Level"'
+    notes: "SF / Remote. Identity/auth. E-Verify."
+    target_roles: ["Software Engineer", "Backend Engineer"]
+    enabled: true
+
+  - name: Glean
+    careers_url: https://job-boards.greenhouse.io/gleanwork
+    api: https://boards-api.greenhouse.io/v1/boards/gleanwork/jobs
+    notes: "Palo Alto. Enterprise AI search."
+    target_roles: ["Software Engineer", "Backend Engineer", "AI Engineer"]
+    enabled: true
+
+  - name: Rippling
+    careers_url: https://www.rippling.com/careers
+    scan_method: websearch
+    scan_query: 'site:rippling.com/careers "Software Engineer" OR "Backend" "New Grad"'
+    notes: "SF. HR/IT platform. E-Verify."
+    target_roles: ["Software Engineer", "Backend Engineer"]
+    enabled: true
+
+  - name: Ramp
+    careers_url: https://jobs.ashbyhq.com/ramp
+    scan_method: websearch
+    scan_query: 'site:jobs.ashbyhq.com/ramp "Software Engineer" OR "Backend"'
+    notes: "NYC. Corporate spend. Python-heavy."
+    target_roles: ["Software Engineer", "Backend Engineer"]
+    enabled: true
+
+  - name: Anduril
+    careers_url: https://www.anduril.com/careers
+    scan_method: websearch
+    scan_query: 'site:anduril.com/careers "Software Engineer" OR "Backend" OR "Platform" "New Grad"'
+    notes: "Costa Mesa / Multiple. Defense tech. E-Verify."
+    target_roles: ["Software Engineer", "Platform Engineer"]
+    enabled: true
+
+  - name: Verkada
+    careers_url: https://jobs.lever.co/verkada
+    notes: "San Mateo. Security hardware + cloud. E-Verify."
+    target_roles: ["Software Engineer", "Backend Engineer", "Cloud Engineer"]
+    enabled: true
+
+  - name: Arize AI
+    careers_url: https://job-boards.greenhouse.io/arizeai
+    api: https://boards-api.greenhouse.io/v1/boards/arizeai/jobs
+    notes: "Berkeley. LLMOps / AI observability."
+    target_roles: ["Software Engineer", "ML Engineer"]
+    enabled: true
+
+  - name: Temporal
+    careers_url: https://job-boards.greenhouse.io/temporal
+    api: https://boards-api.greenhouse.io/v1/boards/temporal/jobs
+    notes: "Remote. Workflow orchestration."
+    target_roles: ["Software Engineer", "Backend Engineer"]
+    enabled: true
+
+  - name: Gusto
+    careers_url: https://gusto.com/about/careers
+    scan_method: websearch
+    scan_query: 'site:gusto.com/about/careers "Software Engineer" OR "Backend"'
+    notes: "SF / Denver / Remote. Payroll/HR. E-Verify."
+    target_roles: ["Software Engineer", "Backend Engineer"]
+    enabled: true
+
+  - name: Compass
+    careers_url: https://www.compass.com/careers
+    scan_method: websearch
+    scan_query: 'site:compass.com/careers "Software Engineer" OR "Backend" OR "Data"'
+    notes: "NYC. Real estate tech. E-Verify."
+    target_roles: ["Software Engineer", "Backend Engineer", "Data Engineer"]
+    enabled: true
+
+  - name: DoorDash
+    careers_url: https://careers.doordash.com
+    scan_method: websearch
+    scan_query: 'site:careers.doordash.com "Software Engineer" OR "Backend" "New Grad"'
+    notes: "SF. E-Verify."
+    target_roles: ["Software Engineer", "Backend Engineer"]
+    enabled: true
+
+  - name: Instacart
+    careers_url: https://instacart.careers
+    scan_method: websearch
+    scan_query: 'site:instacart.careers "Software Engineer" OR "Backend" OR "Data"'
+    notes: "SF / Remote. E-Verify."
+    target_roles: ["Software Engineer", "Backend Engineer", "Data Engineer"]
+    enabled: true
