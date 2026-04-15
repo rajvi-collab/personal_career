@@ -1,9 +1,6 @@
 # Personal Career
 
 [English](README.md)
-<p align="center">
-  <a href="https://x.com/santifer"><img src="docs/hero-banner.jpg" alt="Career-Ops — Multi-Agent Job Search System" width="800"></a>
-</p>
 
 ## Features
 
